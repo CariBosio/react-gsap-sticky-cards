@@ -70,8 +70,8 @@ const Dashboard: FunctionComponent = (props: any) => {
   React.useEffect(() => {
     // Inicializar ScrollSmoother
     const smoother = ScrollSmoother.create({
-      wrapper: containerRef.current, // contenedor padre
-      content: containerRef.current, // contenido
+      wrapper: '#smooth-wrapper', // contenedor padre
+      content: '#smooth-content', // contenido
       smooth: 1.5, // suavizado de scroll
       effects: true, // habilita efectos data-speed, data-lag etc.
     })
@@ -122,56 +122,62 @@ const Dashboard: FunctionComponent = (props: any) => {
 
   return (
     <React.Fragment>
-      <div className={theme.pages}>
-        <section data-title="section Hero" className={theme.hero}>
-          <Typography variant="h1" className={theme.titles}>
-            Art That Lives Onlines
-          </Typography>
-        </section>
+      <div className={theme.body}>
+        <div data-title="div Wrapper" id="smooth-wrapper" ref={containerRef}>
+          <div data-title="div Content" id="smooth-content">
+            <div data-title="div pages" className={theme.pages}>
+              <section data-title="section Hero" className={theme.hero}>
+                <Typography variant="h1" className={theme.titles}>
+                  Art That Lives Onlines
+                </Typography>
+              </section>
 
-        <section data-title="section Sticky Cards" className={theme.stickyCards}>
-          {cardsData.map((card, index) => {
-            return (
-              <React.Fragment key={'P5pQv0iv_' + index}>
-                <div
-                  data-title="{`Card ${card.id}`}"
-                  id={`card${card.id}`}
-                  className={`${theme.card} ${theme.card1}`}
-                  ref={(el) => (cardRefs.current[index] = el)}
-                  key={card.id}
-                >
-                  <div data-title="Card inner" className={theme.cardInner} ref={(el) => (cardInnerRefs.current[index] = el)}>
-                    <div data-title="Info" className={theme.cardInfo}>
-                      <Typography variant="body1">{card.info}</Typography>
-                    </div>
+              <section data-title="section Sticky Cards" className={theme.stickyCards}>
+                {cardsData.map((card, index) => {
+                  return (
+                    <React.Fragment key={'P5pQv0iv_' + index}>
+                      <div
+                        data-title="{`Card ${card.id}`}"
+                        id={`card${card.id}`}
+                        className={`${theme.card} ${theme.card1}`}
+                        ref={(el) => (cardRefs.current[index] = el)}
+                        key={card.id}
+                      >
+                        <div data-title="Card inner" className={theme.cardInner} ref={(el) => (cardInnerRefs.current[index] = el)}>
+                          <div data-title="Info" className={theme.cardInfo}>
+                            <Typography variant="body1">{card.info}</Typography>
+                          </div>
 
-                    <div data-title="Title" className={theme.cardTitle}>
-                      <Typography variant="h1" className={theme.titles}>
-                        {card.title}
-                      </Typography>
-                    </div>
+                          <div data-title="Title" className={theme.cardTitle}>
+                            <Typography variant="h1" className={theme.titles}>
+                              {card.title}
+                            </Typography>
+                          </div>
 
-                    <div data-title="Description" className={theme.cardDescription}>
-                      <Typography variant="body1">{card.description}</Typography>
-                    </div>
+                          <div data-title="Description" className={theme.cardDescription}>
+                            <Typography variant="body1">{card.description}</Typography>
+                          </div>
 
-                    <div data-title="Image" className={theme.cardImage}>
-                      <picture>
-                        <img src={card.imgSrc} alt={card.imgSrc} />
-                      </picture>
-                    </div>
-                  </div>
-                </div>
-              </React.Fragment>
-            )
-          })}
-        </section>
+                          <div data-title="Image" className={theme.cardImage}>
+                            <picture>
+                              <img src={card.imgSrc} alt={card.imgSrc} />
+                            </picture>
+                          </div>
+                        </div>
+                      </div>
+                    </React.Fragment>
+                  )
+                })}
+              </section>
 
-        <section data-title="section Outro" className={theme.outro}>
-          <Typography variant="h1" className={theme.titles}>
-            Next Canvas Awaits
-          </Typography>
-        </section>
+              <section data-title="section Outro" className={theme.outro}>
+                <Typography variant="h1" className={theme.titles}>
+                  Next Canvas Awaits
+                </Typography>
+              </section>
+            </div>
+          </div>
+        </div>
       </div>
     </React.Fragment>
   )
